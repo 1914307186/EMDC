@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE briup[
+<!ENTITY address "华东交通大学">
+]>
+				
+<briup>
+  <class id="1" group="java">
+    <name>华东交大</name>
+    <number>62</number>
+    <address>第三教室</address>
+  </class>
+  <class id="2" group="java">
+    <name>&amp;nbsp;淮阴师范</name>
+    <number>56</number>
+    <address>第一教室</address>
+  </class>
+  <class id="3" group="php">
+    <name>山西大学</name>
+    <number>50</number>
+    <address>第二教室</address>
+  </class>
+  <class id="4" group="Android">
+    <name>华东理工</name>
+    <number>30</number>
+    <address>&address;第四教室</address>
+  </class>
+
+</briup>
+

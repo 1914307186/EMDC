@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<emdc>
+
+  <server class="com.briup.environment.server.ServerImpl">
+    <port>404</port>
+  </server>
+  
+  <dbstore class="com.briup.environment.server.DBStoreImpl">
+    <driver>oracle.jdbc.driver.OracleDriver</driver>
+    <url>jdbc:oracle:thin:@127.0.0.1:1521:XE</url>
+    <username>envir</username>
+    <password>envir</password>
+  </dbstore>
+  
+  <client class="com.briup.environment.client.ClientImpl">
+    <ip>127.0.0.1</ip>
+    <port>404</port>
+  </client>
+  
+  <gather class="com.briup.environment.client.GatherImpl">
+    <src_file>src/radwtmp</src_file>
+    <record_file>src/record</record_file>
+  </gather>
+  
+  <log class="com.briup.environment.util.LoggerImpl">
+    <log_file>src/log4j.properties</log_file>
+  </log>
+  
+  <backup class="com.briup.environment.util.BackupImpl">
+    <back_path>backup/</back_path>
+  </backup>
+  
+</emdc>

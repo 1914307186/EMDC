@@ -1,0 +1,5 @@
+1:tom:20:male:90
+2:jack:22:male:80
+3:rose:21:female:86
+4:mark:20:male:76
+5:kitty:20:female:60

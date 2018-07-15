@@ -1,0 +1,3 @@
+[EMDC_gather] - 2018-06-13 16:17:11,091 ----- [this is warn]
+[EMDC_gather] - 2018-06-13 16:17:11,091 ----- [this is error]
+[EMDC_gather] - 2018-06-13 16:17:11,091 ----- [this is fatal]
