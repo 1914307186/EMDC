@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+			"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.estore.dao.ICustomerDao">
+
+	<select id="findByName" resultType="com.estore.entity.Customer" parameterType="String">
+		SELECT id,name,password,zip,address,telephone,email
+		FROM customer
+		WHERE name=#{name}
+	</select>
+
+	<select id="selectCustomerKey" resultType="long">
+		SELECT customer_id_seq.nextval
+		FROM dual
+	</select>
+	<insert id="saveCustomer" parameterType="com.estore.entity.Customer">
+		INSERT INTO customer
+		VALUES (#{id},#{name},#{password},#{zip},#{address},#{telephone},#{email})
+	</insert>
+
+	<update id="updateCustomer" parameterType="com.estore.entity.Customer">
+		UPDATE customer
+		<set>
+			<if test="password!=null">
+				password=#{password} ,
+			</if>
+			<if test="address!=null">
+				address=#{address} ,
+			</if>
+			<if test="zip!=null">
+				zip=#{zip} ,
+			</if>
+			<if test="telephone!=null">
+				telephone=#{telephone} ,
+			</if>
+			<if test="email!=null">
+				email=#{email} ,
+			</if>
+		</set>
+		WHERE name=#{name}
+	</update>
+
+</mapper>			

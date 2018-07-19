@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.estore.dao.IOrderDao">
+    <select id="findOrderByCustomerId" resultType="com.estore.entity.Order" parameterType="long">
+        SELECT id,cost,orderdate,customerid FROM orderform
+        WHERE customerid=#{id}
+    </select>
+
+    <select id="findById" resultType="com.estore.entity.Order" parameterType="long">
+        SELECT id,cost,orderdate,customerid FROM orderform
+        WHERE id=#{id}
+    </select>
+
+    <select id="selectOrderKey" resultType="long">
+        SELECT orderform_id_seq.nextval FROM dual
+    </select>
+
+    <insert id="saveOrder" parameterType="com.estore.entity.Order">
+        <selectKey keyProperty="id" resultType="long" order="BEFORE">
+            SELECT orderform_id_seq.nextval FROM dual
+        </selectKey>
+        INSERT INTO orderform VALUES (#{id},#{cost},#{orderDate},#{customer.id})
+    </insert>
+
+    <delete id="deleteOrder" parameterType="com.estore.entity.Order">
+        DELETE FROM orderform
+        WHERE id=#{id}
+    </delete>
+
+</mapper>

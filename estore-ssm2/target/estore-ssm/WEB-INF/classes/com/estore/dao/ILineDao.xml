@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.estore.dao.ILineDao">
+
+    <resultMap id="LineResult" type="com.estore.entity.Line" >
+        <result property="id" column="id" />
+        <result property="num" column="num" />
+        <association property="book" column="bookid" select="findBookById" />
+    </resultMap>
+
+    <select id="findBookById" resultType="com.estore.entity.Book" parameterType="long">
+        SELECT id,name,price FROM book
+        WHERE id=#{id}
+    </select>
+
+    <!-- 按照 orderId 查找 line-->
+    <select id="findByOrder" resultMap="LineResult" parameterType="long">
+        SELECT id,num,bookid FROM orderline
+        WHERE orderid=#{orderId}
+    </select>
+
+    <!-- 添加 line-->
+    <insert id="addLine" parameterType="com.estore.entity.Line">
+        <selectKey keyProperty="id" resultType="long" order="BEFORE">
+            SELECT orderline_id_seq.nextval FROM dual
+        </selectKey>
+        INSERT INTO orderline VALUES (#{id},#{num},#{order.id},#{book.id})
+    </insert>
+
+    <!-- 按照 orderId 删除 line-->
+    <delete id="deleteByOrder" parameterType="long">
+        DELETE FROM orderline
+        WHERE ORDERID=#{orderId}
+    </delete>
+
+</mapper>
